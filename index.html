@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D.GO Creative — Learn • Draw • Create</title>
+
+<style>
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#172033;
+  --muted:#667085;
+  --primary:#6c5ce7;
+  --primary2:#8e7dff;
+  --border:#e6e8ef;
+  --shadow:0 12px 35px rgba(24,34,48,.08);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:14px 18px;
+}
+
+.logo{
+  font-weight:900;
+  font-size:22px;
+  color:var(--primary);
+  white-space:nowrap;
+}
+
+.logo span{
+  color:var(--text);
+}
+
+.navlinks{
+  display:flex;
+  gap:6px;
+  flex:1;
+  overflow:auto;
+}
+
+.navlinks button{
+  background:transparent;
+  padding:9px 11px;
+  border-radius:10px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.navlinks button:hover{
+  background:#eeeaff;
+  color:var(--primary);
+}
+
+.iconbtn{
+  background:#eef0f6;
+  padding:10px 13px;
+  border-radius:12px;
+}
+
+main{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 18px 60px;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:22px;
+  background:linear-gradient(135deg,#211b55,#6c5ce7);
+  color:white;
+  border-radius:26px;
+  padding:40px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.hero small{
+  letter-spacing:2px;
+  font-weight:bold;
+}
+
+.hero h1{
+  font-size:clamp(40px,7vw,70px);
+  line-height:.95;
+  margin:14px 0 20px;
+}
+
+.hero p{
+  font-size:17px;
+  line-height:1.7;
+  color:#e8e6ff;
+  max-width:650px;
+}
+
+.hero-art{
+  min-height:280px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  display:grid;
+  place-items:center;
+  font-size:100px;
+}
+
+.primary,
+.secondary{
+  border-radius:12px;
+  padding:11px 15px;
+  font-weight:bold;
+  margin:4px;
+}
+
+.primary{
+  background:var(--primary);
+  color:white;
+}
+
+.hero .primary{
+  background:white;
+  color:#5b4dd0;
+}
+
+.secondary{
+  background:#eeeaff;
+  color:#5546c7;
+}
+
+.searchbar{
+  display:flex;
+  gap:10px;
+  margin:22px 0;
+}
+
+.searchbar input{
+  flex:1;
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:14px;
+  padding:15px 16px;
+  outline:none;
+}
+
+.searchbar input:focus{
+  border-color:var(--primary);
+}
+
+.section{
+  margin-top:42px;
+  scroll-margin-top:85px;
+}
+
+.section h2{
+  margin-bottom:7px;
+}
+
+.sub{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  margin:8px 0;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.emoji{
+  font-size:40px;
+}
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:15px 0;
+}
+
+.chip{
+  padding:8px 13px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:999px;
+}
+
+.chip.active{
+  background:var(--primary);
+  color:white;
+  border-color:var(--primary);
+}
+
+.toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:15px 0;
+}
+
+.toolbar select{
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+}
+
+.tutorial{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.thumb{
+  width:90px;
+  height:80px;
+  border-radius:14px;
+  background:#eeeaff;
+  display:grid;
+  place-items:center;
+  font-size:35px;
+  flex:none;
+}
+
+.statgrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.stat b{
+  display:block;
+  font-size:32px;
+}
+
+.stat small{
+  color:var(--muted);
+}
+
+.progress{
+  height:10px;
+  background:#e9ebf2;
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.progress i{
+  display:block;
+  height:100%;
+  width:0;
+  background:var(--primary);
+}
+
+canvas{
+  width:100%;
+  height:auto;
+  display:block;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  touch-action:none;
+}
+
+.drawtools{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin-bottom:13px;
+}
+
+.drawtools button,
+.drawtools input{
+  padding:9px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--card);
+}
+
+.drawtools input[type="color"]{
+  width:48px;
+  height:40px;
+  padding:3px;
+}
+
+.palette{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.swatch{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:2px solid white;
+  box-shadow:0 0 0 1px #ccc;
+}
+
+.answer{
+  display:block;
+  width:100%;
+  text-align:left;
+  margin:8px 0;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(10,15,30,.65);
+  display:none;
+  place-items:center;
+  padding:18px;
+  z-index:200;
+}
+
+.modal.open{
+  display:grid;
+}
+
+.modalbox{
+  width:100%;
+  max-width:720px;
+  max-height:90vh;
+  overflow:auto;
+  background:var(--card);
+  color:var(--text);
+  border-radius:22px;
+  padding:25px;
+}
+
+.close{
+  float:right;
+  background:#eee;
+  padding:8px 11px;
+  border-radius:10px;
+}
+
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:#171b2c;
+  color:white;
+  padding:13px 17px;
+  border-radius:12px;
+  display:none;
+  z-index:300;
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:35px 18px;
+  border-top:1px solid var(--border);
+}
+
+@media(max-width:900px){
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .statgrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .navlinks{
+    display:none;
+  }
+}
+
+@media(max-width:560px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:27px;
+  }
+
+  .hero-art{
+    min-height:170px;
+    font-size:70px;
+  }
+
+  .searchbar{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav class="nav">
+
+<div class="logo">
+D.GO <span>Creative</span>
+</div>
+
+<div class="navlinks">
+
+<button onclick="go('home')">Home</button>
+
+<button onclick="go('tutorials')">
+Tutorials
+</button>
+
+<button onclick="go('gallery')">
+Gallery
+</button>
+
+<button onclick="go('studio')">
+Drawing Studio
+</button>
+
+<button onclick="go('colors')">
+Color Studio
+</button>
+
+<button onclick="go('quiz')">
+Art Quiz
+</button>
+
+<button onclick="go('progress')">
+Progress
+</button>
+
+</div>
+
+<button
+class="iconbtn"
+onclick="toggleTheme()"
+id="themeBtn">
+🌙
+</button>
+
+</nav>
+
+</header>
+
+
+<main>
+
+<!-- HOME -->
+
+<section id="home" class="hero">
+
+<div>
+
+<small>
+DEVELOPER GO • CREATIVE
+</small>
+
+<h1>
+Learn.<br>
+Draw.<br>
+Create.
+</h1>
+
+<p>
+D.GO Creative adalah platform belajar menggambar
+yang dibuat oleh D.GO. Pelajari bentuk dasar,
+manusia, hewan, benda, perspektif, warna,
+dan langsung latihan menggambar.
+</p>
+
+<button
+class="primary"
+onclick="go('tutorials')">
+Mulai Belajar →
+</button>
+
+<button
+class="secondary"
+onclick="go('studio')">
+Buka Kanvas
+</button>
+
+</div>
+
+<div class="hero-art">
+✏️ 🎨
+</div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="searchbar">
+
+<input
+id="search"
+placeholder="Cari tutorial, misalnya: mata, kucing, perspektif..."
+oninput="renderTutorials()">
+
+<button
+class="primary"
+onclick="go('tutorials')">
+Cari
+</button>
+
+</div>
+
+
+<!-- QUICK ACCESS -->
+
+<section class="section">
+
+<h2>
+⚡ Akses Cepat
+</h2>
+
+<p class="sub">
+Semua tombol di bawah memiliki fungsi.
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="emoji">
+✏️
+</div>
+
+<h3>
+Belajar Menggambar
+</h3>
+
+<p>
+Pelajari teknik menggambar dari dasar.
+</p>
+
+<button
+class="primary"
+onclick="go('tutorials')">
+Tutorial
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">
+🖼️
+</div>
+
+<h3>
+Gallery
+</h3>
+
+<p>
+Lihat berbagai referensi gambar.
+</p>
+
+<button
+class="primary"
+onclick="go('gallery')">
+Buka Galeri
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">
+🖌️
+</div>
+
+<h3>
+Drawing Studio
+</h3>
+
+<p>
+Gambar langsung di website.
+</p>
+
+<button
+class="primary"
+onclick="go('studio')">
+Gambar
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">
+🏆
+</div>
+
+<h3>
+Daily Challenge
+</h3>
+
+<p>
+Selesaikan tantangan dan dapatkan XP.
+</p>
+
+<button
+class="primary"
+onclick="dailyChallenge()">
+Mulai
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TUTORIAL -->
+
+<section id="tutorials" class="section">
+
+<h2>
+📚 Tutorial Menggambar
+</h2>
+
+<p class="sub">
+Pilih kategori dan tingkat kesulitan.
+</p>
+
+<div
+class="chips"
+id="chips">
+</div>
+
+<div class="toolbar">
+
+<select
+id="difficulty"
+onchange="renderTutorials()">
+
+<option value="all">
+Semua tingkat
+</option>
+
+<option>
+Pemula
+</option>
+
+<option>
+Menengah
+</option>
+
+<option>
+Lanjutan
+</option>
+
+</select>
+
+
+<select
+id="sort"
+onchange="renderTutorials()">
+
+<option value="popular">
+Terpopuler
+</option>
+
+<option value="az">
+A-Z
+</option>
+
+</select>
+
+</div>
+
+<div
+class="grid"
+id="tutorialGrid">
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section
+id="gallery"
+class="section">
+
+<h2>
+🖼️ Gallery & Reference
+</h2>
+
+<p class="sub">
+Referensi untuk membantu latihan menggambar.
+</p>
+
+<div
+class="grid"
+id="galleryGrid">
+</div>
+
+</section>
+
+
+<!-- DRAWING STUDIO -->
+
+<section
+id="studio"
+class="section">
+
+<h2>
+🖌️ Drawing Studio
+</h2>
+
+<p class="sub">
+Gambar menggunakan mouse atau layar sentuh.
+</p>
+
+<div class="card">
+
+<div class="drawtools">
+
+<label>
+Warna
+<input
+id="color"
+type="color"
+value="#171717">
+</label>
+
+<label>
+Ukuran
+<input
+id="size"
+type="range"
+min="1"
+max="50"
+value="5">
+</label>
+
+<button
+onclick="setTool('pen')">
+✏️ Pen
+</button>
+
+<button
+onclick="setTool('eraser')">
+🧽 Eraser
+</button>
+
+<button
+onclick="undo()">
+↩ Undo
+</button>
+
+<button
+onclick="clearCanvas()">
+🗑 Clear
+</button>
+
+<button
+onclick="saveCanvas()">
+💾 Save PNG
+</button>
+
+</div>
+
+<canvas
+id="canvas"
+width="1100"
+height="620">
+</canvas>
+
+</div>
+
+</section>
+
+
+<!-- COLOR STUDIO -->
+
+<section
+id="colors"
+class="section">
+
+<h2>
+🎨 Color Studio
+</h2>
+
+<p class="sub">
+Eksplorasi warna dan buat kombinasi warna.
+</p>
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>
+Color Picker
+</h3>
+
+<input
+id="bigColor"
+type="color"
+value="#6c5ce7"
+style="width:100%;height:80px">
+
+<p>
+HEX:
+<b id="hex">
+#6C5CE7
+</b>
+</p>
+
+<button
+class="primary"
+onclick="copyHex()">
+Copy HEX
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+D.GO Palette
+</h3>
+
+<div
+class="palette"
+id="palette">
+</div>
+
+<p>
+Klik warna untuk memilihnya.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Teori Warna
+</h3>
+
+<p>
+<b>Primer:</b>
+merah, kuning, biru.
+</p>
+
+<p>
+<b>Sekunder:</b>
+campuran warna primer.
+</p>
+
+<p>
+<b>Komplementer:</b>
+warna yang berseberangan.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Gradient Generator
+</h3>
+
+<input
+id="g1"
+type="color"
+value="#6c5ce7">
+
+<input
+id="g2"
+type="color"
+value="#ff8fab">
+
+<div
+id="gradient"
+style="
+height:80px;
+border-radius:14px;
+margin-top:12px;
+">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section
+id="quiz"
+class="section">
+
+<h2>
+🧠 Art Quiz
+</h2>
+
+<div class="card">
+
+<h3 id="qtext">
+</h3>
+
+<div id="answers">
+</div>
+
+<p id="quizResult">
+</p>
+
+<button
+class="primary"
+onclick="nextQuiz()">
+Pertanyaan Berikutnya
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PROGRESS -->
+
+<section
+id="progress"
+class="section">
+
+<h2>
+📊 Progress Belajar
+</h2>
+
+<div class="statgrid">
+
+<div class="card stat">
+
+<b id="xp">
+0
+</b>
+
+<small>
+XP
+</small>
+
+</div>
+
+
+<div class="card stat">
+
+<b id="done">
+0
+</b>
+
+<small>
+Tutorial selesai
+</small>
+
+</div>
+
+
+<div class="card stat">
+
+<b id="fav">
+0
+</b>
+
+<small>
+Favorit
+</small>
+
+</div>
+
+
+<div class="card stat">
+
+<b id="level">
+1
+</b>
+
+<small>
+Level
+</small>
+
+</div>
+
+</div>
+
+
+<div
+class="card"
+style="margin-top:16px">
+
+<h3>
+Progress Level
+</h3>
+
+<div class="progress">
+
+<i id="xpbar">
+</i>
+
+</div>
+
+<p id="levelText">
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+D.GO Creative<br>
+<strong>Developer GO</strong><br><br>
+Learn • Draw • Create
+
+</footer>
+
+
+<!-- MODAL -->
+
+<div
+class="modal"
+id="modal"
+onclick="if(event.target===this)closeModal()">
+
+<div class="modalbox">
+
+<button
+class="close"
+onclick="closeModal()">
+✕
+</button>
+
+<div id="modalContent">
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="toast"
+id="toast">
+</div>
+
+
+<script>
+
+/* =========================
+   DATA TUTORIAL
+========================= */
+
+const tutorials = [
+
+[
+"Garis Dasar",
+"Basics",
+"Pemula",
+"✏️",
+"Pelajari garis lurus, garis lengkung, tekanan tangan, dan kontrol garis."
+],
+
+[
+"Bentuk Dasar 3D",
+"Basics",
+"Pemula",
+"◻️",
+"Belajar membuat kubus, balok, bola, dan silinder."
+],
+
+[
+"Perspektif 1 Titik",
+"Perspective",
+"Menengah",
+"📐",
+"Pelajari horizon line dan satu titik hilang."
+],
+
+[
+"Perspektif 2 Titik",
+"Perspective",
+"Lanjutan",
+"🏙️",
+"Gunakan dua titik hilang untuk membuat ruang dan bangunan."
+],
+
+[
+"Mata Kartun",
+"Human",
+"Pemula",
+"👁️",
+"Pelajari cara membuat mata menggunakan bentuk sederhana."
+],
+
+[
+"Wajah dari Bentuk Dasar",
+"Human",
+"Menengah",
+"🙂",
+"Gunakan lingkaran dan garis bantu untuk proporsi wajah."
+],
+
+[
+"Tangan Sederhana",
+"Human",
+"Menengah",
+"✋",
+"Mulai menggambar tangan menggunakan bentuk telapak dan jari."
+],
+
+[
+"Kucing",
+"Animals",
+"Pemula",
+"🐱",
+"Bangun tubuh kucing dari bentuk sederhana."
+],
+
+[
+"Burung",
+"Animals",
+"Pemula",
+"🐦",
+"Latihan bentuk tubuh, sayap, dan siluet burung."
+],
+
+[
+"Naga Fantasi",
+"Animals",
+"Lanjutan",
+"🐉",
+"Gabungkan anatomi hewan dengan desain naga."
+],
+
+[
+"Rumah",
+"Objects",
+"Pemula",
+"🏠",
+"Gunakan kotak dan segitiga untuk membuat rumah."
+],
+
+[
+"Mobil",
+"Objects",
+"Menengah",
+"🚗",
+"Pelajari bentuk dasar kendaraan dan detailnya."
+],
+
+[
+"Pemandangan Gunung",
+"Landscape",
+"Menengah",
+"🏔️",
+"Susun foreground, midground, dan background."
+],
+
+[
+"Langit Malam",
+"Landscape",
+"Pemula",
+"🌌",
+"Latihan bulan, bintang, langit, dan siluet."
+],
+
+[
+"Chibi",
+"Styles",
+"Menengah",
+"🌟",
+"Pelajari proporsi kepala besar dan tubuh sederhana."
+]
+
+];
+
+
+/* =========================
+   GALLERY
+========================= */
+
+const galleries = [
+
+["Bentuk Dasar","◯ ◻️ △","Basics"],
+["Mata","👁️","Human"],
+["Kucing","🐱","Animals"],
+["Rumah","🏠","Objects"],
+["Gunung","🏔️","Landscape"],
+["Warna","🎨","Colors"],
+["Perspektif","📐","Perspective"],
+["Chibi","🌟","Styles"]
+
+];
+
+
+/* =========================
+   STORAGE
+========================= */
+
+let xp =
+Number(localStorage.getItem("dgoXP") || 0);
+
+let done =
+JSON.parse(
+localStorage.getItem("dgoDone") || "[]"
+);
+
+let fav =
+JSON.parse(
+localStorage.getItem("dgoFav") || "[]"
+);
+
+let category="All";
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function go(id){
+
+document
+.getElementById(id)
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(message){
+
+const t =
+document.getElementById("toast");
+
+t.textContent=message;
+
+t.style.display="block";
+
+setTimeout(()=>{
+t.style.display="none";
+},1800);
+
+}
+
+
+/* =========================
+   XP
+========================= */
+
+function addXP(amount){
+
+xp += amount;
+
+saveData();
+
+toast("+"+amount+" XP!");
+
+}
+
+
+function saveData(){
+
+localStorage.setItem(
+"dgoXP",
+xp
+);
+
+localStorage.setItem(
+"dgoDone",
+JSON.stringify(done)
+);
+
+localStorage.setItem(
+"dgoFav",
+JSON.stringify(fav)
+);
+
+updateStats();
+
+}
+
+
+/* =========================
+   DAILY CHALLENGE
+========================= */
+
+function dailyChallenge(){
+
+addXP(25);
+
+openCustomModal(
+`
+<h2>🏆 Daily Drawing Challenge</h2>
+
+<p>
+Hari ini coba gambar sebuah benda
+yang ada di dekatmu.
+</p>
+
+<h3>Aturan:</h3>
+
+<ol>
+<li>Gunakan bentuk dasar.</li>
+<li>Tambahkan detail.</li>
+<li>Berikan bayangan.</li>
+<li>Tambahkan warna jika mau.</li>
+</ol>
+
+<p>
+Setelah selesai, kamu mendapatkan
+pengalaman tambahan untuk latihan.
+</p>
+`
+);
+
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+function renderChips(){
+
+const cats=[
+"All",
+"Basics",
+"Human",
+"Animals",
+"Objects",
+"Landscape",
+"Perspective",
+"Styles"
+];
+
+document.getElementById("chips").innerHTML=
+
+cats.map(c=>`
+
+<button
+class="chip ${category===c?"active":""}"
+onclick="category='${c}';renderChips();renderTutorials()">
+
+${c==="All"?"Semua":c}
+
+</button>
+
+`).join("");
+
+}
+
+
+/* =========================
+   TUTORIAL RENDER
+========================= */
+
+function renderTutorials(){
+
+const q =
+document
+.getElementById("search")
+.value
+.toLowerCase();
+
+const difficulty =
+document
+.getElementById("difficulty")
+.value;
+
+const sort =
+document
+.getElementById("sort")
+.value;
+
+
+let list =
+tutorials.filter(x =>
+
+(category==="All" || x[1]===category)
+
+&&
+
+(difficulty==="all" || x[2]===difficulty)
+
+&&
+
+x.join(" ")
+.toLowerCase()
+.includes(q)
+
+);
+
+
+if(sort==="az"){
+
+list.sort(
+(a,b)=>a[0].localeCompare(b[0])
+);
+
+}
+
+
+document
+.getElementById("tutorialGrid")
+.innerHTML =
+
+list.length
+
+?
+
+list.map(x=>{
+
+const index=
+tutorials.indexOf(x);
+
+return `
+
+<div class="card">
+
+<div class="tutorial">
+
+<div class="thumb">
+${x[3]}
+</div>
+
+<div>
+
+<small>
+${x[1]} • ${x[2]}
+</small>
+
+<h3>
+${x[0]}
+</h3>
+
+</div>
+
+</div>
+
+<p>
+${x[4]}
+</p>
+
+<button
+class="primary"
+onclick="openTutorial(${index})">
+
+Pelajari
+
+</button>
+
+<button
+class="secondary"
+onclick="toggleFav(${index})">
+
+${fav.includes(x[0])?"❤️":"♡"}
+
+</button>
+
+</div>
+
+`;
+
+}).join("")
+
+:
+
+`
+
+<div class="card">
+
+<h3>
+Tidak ditemukan
+</h3>
+
+<p>
+Coba kata pencarian lain.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+   OPEN TUTORIAL
+========================= */
+
+function openTutorial(index){
+
+const x=tutorials[index];
+
+openCustomModal(`
+
+<div style="font-size:65px">
+${x[3]}
+</div>
+
+<small>
+${x[1]} • ${x[2]}
+</small>
+
+<h2>
+${x[0]}
+</h2>
+
+<p>
+${x[4]}
+</p>
+
+<h3>
+Langkah latihan
+</h3>
+
+<ol>
+
+<li>
+Buat bentuk dasar.
+</li>
+
+<li>
+Tambahkan garis bantu.
+</li>
+
+<li>
+Perjelas garis utama.
+</li>
+
+<li>
+Tambahkan detail dan bayangan.
+</li>
+
+<li>
+Rapikan hasil akhir.
+</li>
+
+</ol>
+
+<h3>
+🎬 Video Tutorial
+</h3>
+
+<div
+style="
+background:#111;
+color:white;
+height:180px;
+border-radius:15px;
+display:grid;
+place-items:center;
+text-align:center;
+padding:20px;
+">
+
+Video tutorial dapat ditempatkan
+di bagian ini.
+
+<br><br>
+
+Gunakan YouTube atau video milik
+D.GO sendiri.
+
+</div>
+
+<br>
+
+<button
+class="primary"
+onclick="completeTutorial('${x[0]}')">
+
+✓ Tandai Selesai
+
+</button>
+
+<button
+class="secondary"
+onclick="go('studio');closeModal()">
+
+Latihan di Studio
+
+</button>
+
+`);
+
+}
+
+
+/* =========================
+   COMPLETE
+========================= */
+
+function completeTutorial(name){
+
+if(!done.includes(name)){
+
+done.push(name);
+
+addXP(20);
+
+saveData();
+
+}
+
+closeModal();
+
+toast("Tutorial selesai!");
+
+}
+
+
+/* =========================
+   FAVORITE
+========================= */
+
+function toggleFav(index){
+
+const name=
+tutorials[index][0];
+
+if(fav.includes(name)){
+
+fav =
+fav.filter(x=>x!==name);
+
+toast("Dihapus dari favorit");
+
+}else{
+
+fav.push(name);
+
+toast("Ditambahkan ke favorit");
+
+}
+
+saveData();
+
+renderTutorials();
+
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+function renderGallery(){
+
+document
+.getElementById("galleryGrid")
+.innerHTML =
+
+galleries.map(x=>`
+
+<div class="card">
+
+<div style="font-size:55px">
+${x[1]}
+</div>
+
+<h3>
+${x[0]}
+</h3>
+
+<small>
+Kategori: ${x[2]}
+</small>
+
+<br>
+
+<button
+class="primary"
+onclick="galleryInfo('${x[0]}')">
+
+Lihat Referensi
+
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+function galleryInfo(name){
+
+openCustomModal(`
+
+<h2>
+🖼️ ${name}
+</h2>
+
+<p>
+Gunakan referensi ini sebagai titik awal.
+Jangan langsung mengejar detail.
+Mulai dari bentuk besar terlebih dahulu.
+</p>
+
+<h3>
+Metode latihan
+</h3>
+
+<ol>
+
+<li>Amati objek.</li>
+
+<li>Buat bentuk dasar.</li>
+
+<li>Tambahkan garis bantu.</li>
+
+<li>Tambahkan detail.</li>
+
+<li>Rapikan.</li>
+
+</ol>
+
+<button
+class="primary"
+onclick="go('studio');closeModal()">
+
+Buka Drawing Studio
+
+</button>
+
+`);
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function openCustomModal(content){
+
+document
+.getElementById("modalContent")
+.innerHTML=content;
+
+document
+.getElementById("modal")
+.classList
+.add("open");
+
+}
+
+
+function closeModal(){
+
+document
+.getElementById("modal")
+.classList
+.remove("open");
+
+}
+
+
+/* =========================
+   DRAWING STUDIO
+========================= */
+
+const canvas =
+document.getElementById("canvas");
+
+const ctx =
+canvas.getContext("2d");
+
+let drawing=false;
+
+let last=null;
+
+let tool="pen";
+
+let history=[];
+
+
+function snapshot(){
+
+history.push(
+ctx.getImageData(
+0,
+0,
+canvas.width,
+canvas.height
+)
+);
+
+if(history.length>15){
+
+history.shift();
+
+}
+
+}
+
+
+function setTool(type){
+
+tool=type;
+
+toast(
+type==="pen"
+?
+"Pen aktif"
+:
+"Eraser aktif"
+);
+
+}
+
+
+function getPosition(event){
+
+const rect=
+canvas.getBoundingClientRect();
+
+const point=
+event.touches
+?
+event.touches[0]
+:
+event;
+
+return{
+
+x:
+(point.clientX-rect.left)
+*
+canvas.width
+/
+rect.width,
+
+y:
+(point.clientY-rect.top)
+*
+canvas.height
+/
+rect.height
+
+};
+
+}
+
+
+function startDraw(event){
+
+event.preventDefault();
+
+snapshot();
+
+drawing=true;
+
+last=getPosition(event);
+
+}
+
+
+function draw(event){
+
+if(!drawing)return;
+
+event.preventDefault();
+
+const point=
+getPosition(event);
+
+ctx.beginPath();
+
+ctx.moveTo(
+last.x,
+last.y
+);
+
+ctx.lineTo(
+point.x,
+point.y
+);
+
+ctx.lineWidth=
+document
+.getElementById("size")
+.value;
+
+ctx.lineCap="round";
+
+ctx.strokeStyle =
+tool==="eraser"
+?
+"#ffffff"
+:
+document
+.getElementById("color")
+.value;
+
+ctx.stroke();
+
+last=point;
+
+}
+
+
+function stopDraw(){
+
+drawing=false;
+
+}
+
+
+canvas.addEventListener(
+"mousedown",
+startDraw
+);
+
+canvas.addEventListener(
+"mousemove",
+draw
+);
+
+canvas.addEventListener(
+"mouseup",
+stopDraw
+);
+
+canvas.addEventListener(
+"mouseleave",
+stopDraw
+);
+
+canvas.addEventListener(
+"touchstart",
+startDraw,
+{passive:false}
+);
+
+canvas.addEventListener(
+"touchmove",
+draw,
+{passive:false}
+);
+
+canvas.addEventListener(
+"touchend",
+stopDraw
+);
+
+
+function undo(){
+
+if(history.length){
+
+ctx.putImageData(
+history.pop(),
+0,
+0
+);
+
+toast("Undo");
+
+}
+
+}
+
+
+function clearCanvas(){
+
+snapshot();
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+toast("Kanvas dibersihkan");
+
+}
+
+
+function saveCanvas(){
+
+const link=
+document.createElement("a");
+
+link.download=
+"DGO-Creative-Drawing.png";
+
+link.href=
+canvas.toDataURL("image/png");
+
+link.click();
+
+addXP(10);
+
+}
+
+
+/* =========================
+   COLOR STUDIO
+========================= */
+
+const bigColor=
+document.getElementById("bigColor");
+
+const hex=
+document.getElementById("hex");
+
+bigColor.oninput=function(){
+
+hex.textContent=
+this.value.toUpperCase();
+
+};
+
+
+function copyHex(){
+
+const value=
+hex.textContent;
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(value);
+
+}
+
+toast("HEX disalin");
+
+}
+
+
+/* =========================
+   PALETTE
+========================= */
+
+const colors=[
+
+"#6C5CE7",
+"#FF8FAB",
+"#00B894",
+"#0984E3",
+"#FDCB6E",
+"#E17055",
+"#2D3436",
+"#FFFFFF"
+
+];
+
+
+colors.forEach(color=>{
+
+const button=
+document.createElement("button");
+
+button.className="swatch";
+
+button.style.background=
+color;
+
+button.onclick=function(){
+
+bigColor.value=color;
+
+hex.textContent=
+color;
+
+};
+
+document
+.getElementById("palette")
+.appendChild(button);
+
+});
+
+
+/* =========================
+   GRADIENT
+========================= */
+
+const g1=
+document.getElementById("g1");
+
+const g2=
+document.getElementById("g2");
+
+function updateGradient(){
+
+document
+.getElementById("gradient")
+.style
+.background=
+`
+linear-gradient(
+90deg,
+${g1.value},
+${g2.value}
+)
+`;
+
+}
+
+g1.oninput=updateGradient;
+
+g2.oninput=updateGradient;
+
+
+/* =========================
+   QUIZ
+========================= */
+
+const questions=[
+
+[
+"Apa fungsi horizon line dalam perspektif?",
+[
+"Menentukan garis cakrawala",
+"Mewarnai rambut",
+"Menghapus sketsa",
+"Membuat tekstur"
+],
+0
+],
+
+[
+"Apa yang sebaiknya dibuat lebih dulu ketika menggambar objek kompleks?",
+[
+"Bentuk dasar",
+"Detail terkecil",
+"Warna akhir",
+"Tekstur"
+],
+0
+],
+
+[
+"Warna yang berseberangan pada roda warna disebut?",
+[
+"Komplementer",
+"Monokrom",
+"Netral",
+"Primer"
+],
+0
+]
+
+];
+
+
+let questionIndex=0;
+
+
+function nextQuiz(){
+
+const q=
+questions[
+questionIndex %
+questions.length
+];
+
+document
+.getElementById("qtext")
+.textContent=q[0];
+
+document
+.getElementById("answers")
+.innerHTML=
+
+q[1].map((answer,index)=>`
+
+<button
+class="secondary answer"
+onclick="answerQuiz(${index})">
+
+${String.fromCharCode(65+index)}.
+${answer}
+
+</button>
+
+`).join("");
+
+document
+.getElementById("quizResult")
+.textContent="";
+
+questionIndex++;
+
+}
+
+
+function answerQuiz(index){
+
+const actual=
+(questionIndex-1)
+%
+questions.length;
+
+const correct=
+questions[actual][2];
+
+if(index===correct){
+
+document
+.getElementById("quizResult")
+.textContent=
+"✅ Benar! +15 XP";
+
+addXP(15);
+
+}else{
+
+document
+.getElementById("quizResult")
+.textContent=
+"❌ Belum tepat. Pelajari materinya lagi.";
+
+}
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateStats(){
+
+document
+.getElementById("xp")
+.textContent=xp;
+
+document
+.getElementById("done")
+.textContent=done.length;
+
+document
+.getElementById("fav")
+.textContent=fav.length;
+
+
+const level=
+Math.floor(xp/100)+1;
+
+document
+.getElementById("level")
+.textContent=level;
+
+
+const current=
+xp%100;
+
+document
+.getElementById("xpbar")
+.style
+.width=current+"%";
+
+
+document
+.getElementById("levelText")
+.textContent=
+`${current}/100 XP menuju Level ${level+1}.`;
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleTheme(){
+
+const dark=
+document.body.dataset.dark==="1";
+
+if(!dark){
+
+document.body.dataset.dark="1";
+
+document.documentElement
+.style
+.setProperty("--bg","#10131c");
+
+document.documentElement
+.style
+.setProperty("--card","#171b26");
+
+document.documentElement
+.style
+.setProperty("--text","#f4f5f7");
+
+document.documentElement
+.style
+.setProperty("--muted","#a8afbd");
+
+document.documentElement
+.style
+.setProperty("--border","#2b3140");
+
+document
+.getElementById("themeBtn")
+.textContent="☀️";
+
+}else{
+
+document.body.dataset.dark="0";
+
+document.documentElement
+.style
+.setProperty("--bg","#f5f7fb");
+
+document.documentElement
+.style
+.setProperty("--card","#ffffff");
+
+document.documentElement
+.style
+.setProperty("--text","#172033");
+
+document.documentElement
+.style
+.setProperty("--muted","#667085");
+
+document.documentElement
+.style
+.setProperty("--border","#e6e8ef");
+
+document
+.getElementById("themeBtn")
+.textContent="🌙";
+
+}
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderChips();
+
+renderTutorials();
+
+renderGallery();
+
+updateStats();
+
+updateGradient();
+
+nextQuiz();
+
+</script>
+
+</body>
+  </html>
